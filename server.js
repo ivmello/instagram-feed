@@ -35,6 +35,7 @@ router.get('/user/:username', async function(req, res) {
             headless: true,
             defaultViewport: null,
             args: [
+                '--no-sandbox',
                 '--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
                 '--user-data-dir=/tmp/user_data/',
                 '--window-size=1200,800',
@@ -68,10 +69,11 @@ router.get('/user/:username', async function(req, res) {
           */
         await page.goto(`https://www.instagram.com/${username}/`);
         const imgList = await page.evaluate(() => {
-            const nodeList = document.querySelectorAll(".KL4Bh img");
+            const nodeList = document.querySelectorAll(".v1Nh3");
             const imgArray = [...nodeList];
-            const imgList = imgArray.map(({src}) => ({
-                src
+            const imgList = imgArray.map(item => ({
+                link: item.querySelector('a').href,
+                img: item.querySelector('a .KL4Bh img').src,
             }));
             return imgList;
         });
