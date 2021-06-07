@@ -6,7 +6,7 @@ O código utiliza do ```Puppeteer``` para abrir um navegador, fazer o login com 
 
 Depois de gerado ele le esse arquivo para evitar multiplas requisições. A validação é feita a cada minuto.
 
-Para roda em desenvolvimento:
+Para rodar em desenvolvimento:
 
 ```
 yarn dev
