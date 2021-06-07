@@ -19,6 +19,6 @@ npm run dev
 Produção:
 
 ```
-yarn start
-ou npm start
+yarn prod
+ou npm run prod
 ```
