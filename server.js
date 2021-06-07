@@ -3,8 +3,16 @@ require('dotenv').config()
 const express = require('express');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
+
 const router = express.Router();
 const PORT = 3000;
 
